@@ -56,7 +56,15 @@ int main(void)
                         }
                         for (i = 0; argv[i] != NULL; i++)
                                 printf("%d, %s\n", i, argv[i]);
-                };
+                }else{
+                        for (i = 0; argv[i] != NULL; i++)
+                        {
+                                argv[i] = NULL;
+                                free(argv[i]);
+                        }
+                        for (i = 0; argv[i] != NULL; i++)
+                                printf("%d, %s\n", i, argv[i]);
+                }
 
                 free(lineCopy);
         }

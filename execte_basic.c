@@ -2,11 +2,16 @@
 
 int execute_basic(char *argv[])
 {
-        /* executing the commands */
-        if (execve(argv[0], argv, NULL) == -1)
+        if (fork() == 0)
         {
-                perror("File execution error");
-                return (-1);
+                /* executing the commands */
+                if (execve(argv[0], argv, NULL) == -1)
+                {
+                        perror("File execution error");
+                        return (-1);
+                }
+        }else{
+                wait(NULL);
         }
 
         return (0);
